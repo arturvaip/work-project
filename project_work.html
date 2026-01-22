@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    
+   <style>
+     html, body {
+       margin: 0;
+       padding: 0;
+     }
+     
+     #intro {
+       position: fixed;
+       display: flex;
+       inset: 0;
+       justify-content: center;
+       align-items: center;
+       transform: translateY(-60vh);
+       background: transparent;
+       z-index: 20;
+       opacity: 0;
+       transition: opacity 1.5s, transform 1.5s;
+     }
+     
+     #intro.show {
+       opacity: 1;
+       transform: translateY(-10vh);
+       pointer-events: auto;
+     }
+
+     #intro.unshow {
+       opacity: 0;
+       transform: translateY(-60vh);
+       pointer-events: none;
+      }
+
+     #intro:hover {
+       background: transparent;
+       cursor: pointer;
+     }
+
+     #intro2 {
+      position: fixed;
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-40vh);
+      background: transparent;
+      z-index: 20;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 3.5s, transform 1.5s;
+     }
+
+     #intro2.show {
+      opacity: 1;
+      transform: translateY(0vh);
+      pointer-events: auto;
+     }
+
+     #intro2:hover {
+        background: transparent;
+        cursor: pointer;
+     }
+
+     #intro2.unshow {
+       opacity: 0;
+       transform: translateY(-40vh);
+       pointer-events: none;
+      }
+
+     #allcatalog {
+      position: fixed;
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      background-image: url("assets/images/fon.jpg");
+      transition: opacity 4.5s;
+      z-index: 2;
+     }
+
+     #allcatalog.show {
+      opacity: 1;
+      pointer-events: auto;
+     }
+
+     #privet {
+      position: fixed;
+      display: flex;
+      inset: 0;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-40vh);
+      opacity: 0;
+      transition: opacity 4.5s, transform 4.5s;
+      z-index: 3;
+      color: white;
+      text-shadow: 2px 2px 4px black;
+     }
+
+     #privet.show {
+       opacity: 1;
+       transform: translateY(0vh);
+     }
+
+     #privet.unshow {
+       opacity: 0;
+       transform: translateY(-40vh);
+     }
+
+     #catalog {
+      position: fixed;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      inset: 0;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-40vh);
+      opacity: 0;
+      transition: opacity 1.5s, transform 2.5s;
+      z-index: 3;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+     }
+
+     @media (max-width: 600px) {
+      #catalog {
+      flex-direction: column; /* карточки будут в колонку */
+      gap: 10px;
+     }}
+
+     #catalog.show {
+       opacity: 1;
+       transform: translateY(0vh);
+     }
+
+     #tovar1, #tovar2, #tovar3, #tovar4, #tovar5, #tovar6, #tovar7, #tovar8, #tovar9, #tovar10{
+       font-size: 2vh;
+     }
+   </style>
+
+  </head>
+<body>
+<div id="intro">
+  <h1>название сайта</h1>
+</div>
+
+<div id="intro2">
+  <h1>вторая часть</h1>
+</div>
+
+<h1 id="privet">привет</h1>
+
+
+<div id="allcatalog">
+  <div id="catalog">
+   <div id="tovar1"> привет</div>
+   <div id="tovar2">пока </div>
+   <div id="tovar3"> любовь</div>
+   <div id="tovar4">спать </div>
+   <div id="tovar5">еда </div>
+   <div id="tovar6">бег </div>
+   <div id="tovar7">спори </div>
+   <div id="tovar8">мразь </div>
+   <div id="tovar9">обои </div>
+   <div id="tovar10">сайт </div>
+  </div>
+</div>
+
+</body>
+<script>
+ const intro = document.getElementById("intro");
+ const intro2 = document.getElementById("intro2");
+ const allcatalog = document.getElementById("allcatalog");
+ const privet = document.getElementById("privet");
+ const catalog = document.getElementById("catalog");
+
+  window.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      intro.classList.add("show");
+    }, 50);
+  });
+
+    intro.addEventListener("click", function () {
+     intro.classList.add("unshow");
+     intro2.classList.add("show");
+    })
+
+    intro2.addEventListener("click", function () {
+     intro2.classList.add("unshow");
+     setTimeout(() => {
+      privet.classList.add("show");
+      allcatalog.classList.add("show");
+     }, 150);
+     setTimeout(() => {
+      privet.classList.remove("show");
+      privet.classList.add("unshow");
+      catalog.classList.add("show")
+     }, 4500);
+    })
+
+</script>
+</html>
